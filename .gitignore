@@ -1,0 +1,10 @@
+package.json
+package-lock.json
+vite.config.ts
+postcss.config.js
+tailwind.config.js
+src/vite-env.d.ts
+YOURWARE.md
+yw_manifest.json
+.env
+node_modules/
