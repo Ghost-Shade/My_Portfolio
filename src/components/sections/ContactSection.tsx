@@ -131,7 +131,7 @@ export default function ContactSection() {
                       className="text-sm"
                       style={{ color: COLORS.textSecondary }}
                     >
-                      hello@jamsonanjera.com
+                      jamsonanjera@gmail.com
                     </div>
                   </div>
                 </div>

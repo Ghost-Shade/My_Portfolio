@@ -150,10 +150,10 @@ function App() {
             viewport={{ once: true }}
           >
             <p style={{ color: COLORS.textSecondary }}>
-              © 2024 Jamson Anjera. Built with passion and cutting-edge technology.
+              © 2025 Jamson Anjera. Built with passion and cutting-edge technology.
             </p>
             <p className="mt-2 text-sm" style={{ color: COLORS.textSecondary }}>
-              Press Ctrl+T for terminal • Crafted with React, Three.js, and ❤️
+              Kind Sophistication • Crafted with React, Three.js, and ❤️
             </p>
           </motion.div>
         </div>

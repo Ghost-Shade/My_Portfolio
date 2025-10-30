@@ -61,8 +61,8 @@ export default function HeroSection() {
           style={{ color: COLORS.textSecondary }}
           variants={itemVariants}
         >
+          <div>Cyber Security Enthusiast</div>
           <div>Creative Technologist</div>
-          <div>Security Enthusiast</div>
           <div>Software Developer</div>
         </motion.div>
 

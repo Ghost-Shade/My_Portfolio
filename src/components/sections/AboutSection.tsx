@@ -84,7 +84,7 @@ export default function AboutSection() {
                 className="text-lg leading-relaxed"
                 style={{ color: COLORS.text }}
               >
-                My expertise in <span style={{ color: COLORS.accent }}>Artificial Intelligence</span> and <span style={{ color: COLORS.accent }}>Software Development</span> allows me to bridge the gap between cutting-edge technology and practical applications that solve real-world problems.
+                My expertise in <span style={{ color: COLORS.accent }}>Cyber Security</span> and <span style={{ color: COLORS.accent }}>Software Development</span> allows me to bridge the gap between cutting-edge technology and practical applications that solve real-world problems.
               </p>
               
               <p
