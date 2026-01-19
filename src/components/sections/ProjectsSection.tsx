@@ -4,6 +4,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Project } from '../../types';
 import { COLORS, FONTS } from '../../constants';
+import securityProject from '/src/assets/security-project.jpg';
+import  portfolio3D  from '/src/assets/3d-portfolio.jpg';
+import AIDashboard from '/src/assets/AI-Powered Dashboard.jpg';
+import Blockchain from '/src/assets/Blockchain.jpg';
+import CloudMonitor from '/src/assets/Cloud-Monitor.jpg';
+import MobileSec from '/src/assets/Mobile-Sec.jpg';
+
 
 const projects: Project[] = [
   {
@@ -11,9 +18,9 @@ const projects: Project[] = [
     title: 'Security Software Suite',
     description: 'Advanced cybersecurity platform with real-time threat detection and automated response systems.',
     technologies: ['React', 'Node.js', 'Python', 'Machine Learning'],
-    image: '/assets/security-project.jpg',
+    image: securityProject,
     demoUrl: '#',
-    githubUrl: '#',
+    githubUrl: 'https://github.com/Ghost-Shade/Windows-Security-Program',
     featured: true,
   },
   {
@@ -21,9 +28,9 @@ const projects: Project[] = [
     title: '3D Portfolio Experience',
     description: 'Interactive 3D portfolio showcasing advanced web graphics and immersive user experiences.',
     technologies: ['Three.js', 'React', 'WebGL', 'GSAP'],
-    image: '/assets/3d-portfolio.jpg',
+    image: portfolio3D,
     demoUrl: '#',
-    githubUrl: '#',
+    githubUrl: 'https://github.com/Ghost-Shade/My_Portfolio',
     featured: true,
   },
   {
@@ -31,7 +38,7 @@ const projects: Project[] = [
     title: 'AI-Powered Analytics Dashboard',
     description: 'Intelligent data visualization platform with predictive analytics and automated insights.',
     technologies: ['TypeScript', 'D3.js', 'TensorFlow.js', 'Next.js'],
-    image: '/assets/analytics-dashboard.jpg',
+    image: AIDashboard,
     demoUrl: '#',
     githubUrl: '#',
     featured: false,
@@ -41,7 +48,7 @@ const projects: Project[] = [
     title: 'Blockchain Security Auditor',
     description: 'Smart contract security analysis tool with vulnerability detection and audit reports.',
     technologies: ['Solidity', 'Web3.js', 'React', 'Ethereum'],
-    image: '/assets/blockchain-auditor.jpg',
+    image: Blockchain,
     demoUrl: '#',
     githubUrl: '#',
     featured: false,
@@ -51,7 +58,7 @@ const projects: Project[] = [
     title: 'Cloud Infrastructure Monitor',
     description: 'Real-time cloud infrastructure monitoring with automated scaling and alert systems.',
     technologies: ['AWS', 'Docker', 'Kubernetes', 'Go'],
-    image: '/assets/cloud-monitor.jpg',
+    image: CloudMonitor,
     demoUrl: '#',
     githubUrl: '#',
     featured: false,
@@ -61,7 +68,7 @@ const projects: Project[] = [
     title: 'Mobile Security Framework',
     description: 'Comprehensive mobile app security testing and vulnerability assessment framework.',
     technologies: ['React Native', 'Flutter', 'Swift', 'Kotlin'],
-    image: '/assets/mobile-security.jpg',
+    image: MobileSec,
     demoUrl: '#',
     githubUrl: '#',
     featured: false,
@@ -122,6 +129,12 @@ export default function ProjectsSection() {
       },
     },
   };
+
+  const openLink = (url?: string) => {
+  if (!url || url === '#') return;
+  window.open(url, '_blank', 'noopener,noreferrer');
+};
+
 
   return (
     <section
@@ -187,8 +200,16 @@ export default function ProjectsSection() {
                 whileHover={{ y: -10, scale: 1.02 }}
                 onClick={() => setSelectedProject(project)}
               >
-                <div className="aspect-video bg-gradient-to-br from-purple-600/20 to-blue-600/20 flex items-center justify-center">
+                {/* <div className="aspect-video bg-gradient-to-br from-purple-600/20 to-blue-600/20 flex items-center justify-center">
                   <div className="text-6xl opacity-50">🚀</div>
+                </div> */}
+
+                <div className="aspect-video overflow-hidden">
+                  <img 
+                  src={project.image}
+                  alt={project.title}
+                  className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
+                  />
                 </div>
                 
                 <div className="p-6">
@@ -256,7 +277,14 @@ export default function ProjectsSection() {
               variants={modalVariants}
             >
               <div className="aspect-video bg-gradient-to-br from-purple-600/20 to-blue-600/20 flex items-center justify-center">
-                <div className="text-8xl opacity-50">🚀</div>
+                {/* <div className="text-8xl opacity-50">🚀</div> */}
+                {selectedProject?.image && (
+                  <img
+                  src={selectedProject.image}
+                  alt={selectedProject.title}
+                  className="w-full h-full object-cover rounded-lg"
+                  />
+                )}
               </div>
               
               <div className="p-8">
@@ -306,6 +334,7 @@ export default function ProjectsSection() {
                     }}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
+                    onClick={() => openLink(selectedProject.demoUrl)}
                   >
                     🔗 Live Demo
                   </motion.button>
@@ -321,6 +350,7 @@ export default function ProjectsSection() {
                       color: COLORS.text,
                     }}
                     whileTap={{ scale: 0.95 }}
+                    onClick={() => openLink(selectedProject.githubUrl)}
                   >
                     💻 View Code
                   </motion.button>

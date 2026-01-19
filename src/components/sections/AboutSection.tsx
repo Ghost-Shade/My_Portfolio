@@ -101,10 +101,10 @@ export default function AboutSection() {
             variants={itemVariants}
           >
             {[
-              { label: 'Projects', value: '50+' },
-              { label: 'Technologies', value: '20+' },
-              { label: 'Years Experience', value: '5+' },
-              { label: 'Happy Clients', value: '30+' },
+              { label: 'Projects', value: '2+' },
+              { label: 'Technologies', value: '7+' },
+              { label: 'Years Experience', value: '1+' },
+              { label: 'Happy Clients', value: '0+' },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
