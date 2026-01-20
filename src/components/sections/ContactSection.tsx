@@ -275,7 +275,7 @@ export default function ContactSection() {
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                   >
-                    ✅ Message sent successfully! I'll get back to you soon.
+                    Message sent successfully! I'll get back to you soon.
                   </motion.div>
                 )}
 
@@ -289,7 +289,7 @@ export default function ContactSection() {
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                   >
-                    ❌ Failed to send message. Please try again later.
+                    Failed to send message. Please try again later.
                   </motion.div>
                 )}
 

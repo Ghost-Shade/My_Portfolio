@@ -1,9 +1,9 @@
 import emailjs from '@emailjs/browser';
 import { ContactForm } from '../types';
 
-const PUBLIC_KEY = 'YOUR_PUBLIC_KEY'; //EmailJS public key
-const SERVICE_ID = 'YOUR_SERVICE_ID'; // EmailJS service ID
-const TEMPLATE_ID = 'YOUR_TEMPLATE_ID'; // EmailJS template ID
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string; //EmailJS public key
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID as string; // EmailJS service ID
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string; // EmailJS template ID
 
 export const sendEmail = async (formData: ContactForm): Promise<boolean> => {
   try {
