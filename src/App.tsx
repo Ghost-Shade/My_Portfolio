@@ -11,7 +11,7 @@ const Navigation = () => import('./components/ui/Navigation').then(mod => mod.de
 const HeroSection = () => import('./components/sections/HeroSection').then(mod => mod.default);
 const AboutSection = () => import('./components/sections/AboutSection').then(mod => mod.default);
 const ProjectsSection = () => import('./components/sections/ProjectsSection').then(mod => mod.default);
-const NewsSection = () => import('./components/sections/NewsSection').then(mod => mod.default);
+//const NewsSection = () => import('./components/sections/NewsSection').then(mod => mod.default);
 const AchievementsSection = () => import('./components/sections/AchievementsSection').then(mod => mod.default);
 const ContactSection = () => import('./components/sections/ContactSection').then(mod => mod.default);
 const WavesBackground = () => import('./components/three/WavesBackground').then(mod => mod.default);
@@ -25,7 +25,7 @@ function App() {
   const [HeroComp, setHeroComp] = useState<any>(null);
   const [AboutComp, setAboutComp] = useState<any>(null);
   const [ProjectsComp, setProjectsComp] = useState<any>(null);
-  const [NewsComp, setNewsComp] = useState<any>(null);
+  //const [NewsComp, setNewsComp] = useState<any>(null);
   const [AchievementsComp, setAchievementsComp] = useState<any>(null);
   const [ContactComp, setContactComp] = useState<any>(null);
   const [WavesComp, setWavesComp] = useState<any>(null);
@@ -46,7 +46,7 @@ function App() {
         Hero,
         About,
         Projects,
-        News,
+        //News,
         Achievements,
         Contact,
         Waves,
@@ -58,7 +58,7 @@ function App() {
         HeroSection(),
         AboutSection(),
         ProjectsSection(),
-        NewsSection(),
+        //NewsSection(),
         AchievementsSection(),
         ContactSection(),
         WavesBackground(),
@@ -71,7 +71,7 @@ function App() {
       setHeroComp(() => Hero);
       setAboutComp(() => About);
       setProjectsComp(() => Projects);
-      setNewsComp(() => News);
+      //setNewsComp(() => News);
       setAchievementsComp(() => Achievements);
       setContactComp(() => Contact);
       setWavesComp(() => Waves);
@@ -135,7 +135,7 @@ function App() {
         {HeroComp && <HeroComp />}
         {AboutComp && <AboutComp />}
         {ProjectsComp && <ProjectsComp />}
-        {NewsComp && <NewsComp />}
+        {/*NewsComp && <NewsComp />*/}
         {AchievementsComp && <AchievementsComp/>}
         {ContactComp && <ContactComp />}
       </main>

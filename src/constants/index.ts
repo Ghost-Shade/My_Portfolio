@@ -34,6 +34,7 @@ export const SECTIONS = {
   hero: 'hero',
   about: 'about',
   projects: 'projects',
-  news: 'news',
+  //news: 'news',
+  achievements: 'achievements',
   contact: 'contact',
 } as const;
