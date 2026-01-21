@@ -33,3 +33,25 @@ export interface SectionProps {
 export interface FloatingObjectProps {
   mousePosition: { x: number; y: number };
 }
+
+export type Achievement = {
+  id: string;
+  platform: 'Bugcrowd' | 'HackerOne' | 'Other';
+  title: string;
+  description: string;
+  date: string;
+  link?: string;
+  stats?: {
+    rank?: string;
+    reputation?: number;
+    bugsSubmitted?: number;
+    swagReceived?: string[];
+  };
+};
+
+export type FunFact = {
+  id: string;
+  fact: string;
+  icon: string; // emoji or icon class
+  category: string;
+};

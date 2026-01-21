@@ -12,6 +12,7 @@ const HeroSection = () => import('./components/sections/HeroSection').then(mod =
 const AboutSection = () => import('./components/sections/AboutSection').then(mod => mod.default);
 const ProjectsSection = () => import('./components/sections/ProjectsSection').then(mod => mod.default);
 const NewsSection = () => import('./components/sections/NewsSection').then(mod => mod.default);
+const AchievementsSection = () => import('./components/sections/AchievementsSection').then(mod => mod.default);
 const ContactSection = () => import('./components/sections/ContactSection').then(mod => mod.default);
 const WavesBackground = () => import('./components/three/WavesBackground').then(mod => mod.default);
 const FloatingObject = () => import('./components/three/FloatingObject').then(mod => mod.default);
@@ -25,6 +26,7 @@ function App() {
   const [AboutComp, setAboutComp] = useState<any>(null);
   const [ProjectsComp, setProjectsComp] = useState<any>(null);
   const [NewsComp, setNewsComp] = useState<any>(null);
+  const [AchievementsComp, setAchievementsComp] = useState<any>(null);
   const [ContactComp, setContactComp] = useState<any>(null);
   const [WavesComp, setWavesComp] = useState<any>(null);
   const [FloatingComp, setFloatingComp] = useState<any>(null);
@@ -45,6 +47,7 @@ function App() {
         About,
         Projects,
         News,
+        Achievements,
         Contact,
         Waves,
         Floating,
@@ -56,6 +59,7 @@ function App() {
         AboutSection(),
         ProjectsSection(),
         NewsSection(),
+        AchievementsSection(),
         ContactSection(),
         WavesBackground(),
         FloatingObject(),
@@ -131,6 +135,7 @@ function App() {
         {AboutComp && <AboutComp />}
         {ProjectsComp && <ProjectsComp />}
         {NewsComp && <NewsComp />}
+        {AchievementsComp && <AchievementsComp/>}
         {ContactComp && <ContactComp />}
       </main>
 
