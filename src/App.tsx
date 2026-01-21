@@ -72,6 +72,7 @@ function App() {
       setAboutComp(() => About);
       setProjectsComp(() => Projects);
       setNewsComp(() => News);
+      setAchievementsComp(() => Achievements);
       setContactComp(() => Contact);
       setWavesComp(() => Waves);
       setFloatingComp(() => Floating);
