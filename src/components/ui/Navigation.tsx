@@ -12,7 +12,7 @@ export default function Navigation() {
     { id: SECTIONS.hero, label: 'Home' },
     { id: SECTIONS.about, label: 'About' },
     { id: SECTIONS.projects, label: 'Projects' },
-    //{ id: SECTIONS.news, label: 'News' },
+    //--{ id: SECTIONS.news, label: 'News' },
     { id: SECTIONS.achievements, label: 'Achievements'},
     { id: SECTIONS.contact, label: 'Contact' },
   ];

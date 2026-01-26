@@ -6,6 +6,7 @@ import { useMousePosition } from './hooks/useMousePosition';
 import { initEmailJS } from './utils/email';
 import { COLORS } from './constants';
 
+
 // Lazy load components for better performance
 const Navigation = () => import('./components/ui/Navigation').then(mod => mod.default);
 const HeroSection = () => import('./components/sections/HeroSection').then(mod => mod.default);

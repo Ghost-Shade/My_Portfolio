@@ -16,6 +16,7 @@ import {
   FaExternalLinkAlt
 } from 'react-icons/fa';
 import { SiHackerone } from 'react-icons/si';
+import { SiBugcrowd} from 'react-icons/si';
 
 export default function AchievementsSection() {
   const [ref, inView] = useInView({
@@ -82,7 +83,7 @@ export default function AchievementsSection() {
   const getPlatformIcon = (platform: string) => {
     switch (platform) {
       case 'Bugcrowd':
-        return <FaCrow className="text-green-500" />;
+        return <SiBugcrowd className="text-green-500" />;
       case 'HackerOne':
         return <SiHackerone className="text-orange-500" />;
       default:
@@ -191,10 +192,10 @@ export default function AchievementsSection() {
             variants={containerVariants}
           >
             {[
-              { label: 'Total Bugs', value: '79+', icon: <FaBug className="text-xl" />, color: 'text-red-400' },
+              { label: 'Total Bugs', value: '3+', icon: <FaBug className="text-xl" />, color: 'text-red-400' },
               { label: 'Platforms', value: '2', icon: <FaShieldAlt className="text-xl" />, color: 'text-blue-400' },
-              { label: 'Rank', value: 'Top 2%', icon: <FaTrophy className="text-xl" />, color: 'text-yellow-400' },
-              { label: 'Reputation', value: '5.6k', icon: <FaStar className="text-xl" />, color: 'text-green-400' },
+              { label: 'Rank', value: 'Top 0%', icon: <FaTrophy className="text-xl" />, color: 'text-yellow-400' },
+              { label: 'Reputation', value: '0k', icon: <FaStar className="text-xl" />, color: 'text-green-400' },
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -340,7 +341,7 @@ export default function AchievementsSection() {
           >
             <div className="flex flex-wrap justify-center gap-4">
               <motion.a
-                href="https://bugcrowd.com/your-profile"
+                href="https://bugcrowd.com/Ghost-Shade"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3 rounded-full font-semibold border-2 transition-all flex items-center gap-3"
@@ -354,11 +355,11 @@ export default function AchievementsSection() {
                 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <FaCrow /> Bugcrowd Profile
+                <SiBugcrowd /> Bugcrowd Profile
               </motion.a>
               
               <motion.a
-                href="https://hackerone.com/your-profile"
+                href="https://hackerone.com/ghosts_shade"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3 rounded-full font-semibold border-2 transition-all flex items-center gap-3"

@@ -4,28 +4,28 @@ export const fetchAchievements = async (): Promise<Achievement[]> => {
     {
       id: '1',
       platform: 'Bugcrowd',
-      title: 'Top 100 Researcher',
-      description: 'Achieved top 100 ranking in Bugcrowd\'s global leaderboard',
-      date: '2024-03-15',
-      link: 'https://bugcrowd.com/your-profile',
+      title: 'Top 10000 Researcher',
+      description: 'Achieved top 10000 ranking in Bugcrowd\'s global leaderboard',
+      date: '2025-01-20',
+      link: 'https://bugcrowd.com/Ghost-Shade',
       stats: {
-        rank: '#78',
-        reputation: 2450,
-        bugsSubmitted: 42,
-        swagReceived: ['Hoodie', 'Stickers', 'Special Badge']
+        rank: '#0',
+        reputation: 0,
+        bugsSubmitted: 5,
+        swagReceived: ['Special Badge']
       }
     },
     {
       id: '2',
       platform: 'HackerOne',
-      title: 'Elite Hacker',
-      description: 'Recognized as Elite hacker with multiple critical findings',
-      date: '2024-02-28',
-      link: 'https://hackerone.com/your-profile',
+      title: 'Newbie Hacker',
+      description: 'Recognized as Newbie hacker',
+      date: '2026-11-17',
+      link: 'https://hackerone.com/Ghosts_Shade',
       stats: {
-        rank: 'Top 2%',
-        reputation: 3150,
-        bugsSubmitted: 37
+        rank: 'Top 0%',
+        reputation: 0,
+        bugsSubmitted: 1
       }
     },
     {
@@ -33,34 +33,34 @@ export const fetchAchievements = async (): Promise<Achievement[]> => {
       platform: 'Bugcrowd',
       title: 'Program Hall of Fame',
       description: 'Featured in hall of fame for 5+ private programs',
-      date: '2024-01-20',
-      link: 'https://bugcrowd.com/your-profile',
+      date: '2025-01-20',
+      link: 'https://bugcrowd.com/Ghost-Shade',
       stats: {
-        swagReceived: ['Certificate', 'Exclusive Invite']
+        swagReceived: ['Special Badge']
       }
     },
-    {
-      id: '4',
-      platform: 'Other',
-      title: 'CTF Champion',
-      description: 'Won first place in regional cybersecurity competition',
-      date: '2023-12-10',
-    },
-    {
-      id: '5',
-      platform: 'Other',
-      title: 'CVE Published',
-      description: 'Discovered and published CVE-2024-XXXXX',
-      date: '2023-11-05',
-      link: 'https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-XXXXX'
-    },
-    {
-      id: '6',
-      platform: 'Other',
-      title: 'Conference Speaker',
-      description: 'Presented research at BlackHat/Defcon',
-      date: '2023-10-15',
-    }
+    // {
+    //   id: '4',
+    //   platform: 'Other',
+    //   title: 'CTF',
+    //   description: 'Participated',
+    //   date: '2025-10-10',
+    // },
+    // {
+    //   id: '5',
+    //   platform: 'Other',
+    //   title: 'CVE Published',
+    //   description: 'Discovered and published CVE-2024-XXXXX',
+    //   date: '2023-11-05',
+    //   link: 'https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-XXXXX'
+    // },
+    // {
+    //   id: '6',
+    //   platform: 'Other',
+    //   title: 'Conference Speaker',
+    //   description: 'Presented research at BlackHat/Defcon',
+    //   date: '2023-10-15',
+    // }
   ];
 };
 
@@ -68,25 +68,25 @@ export const fetchFunFacts = async (): Promise<FunFact[]> => {
     return [
     {
       id: '1',
-      fact: 'Found my first bug in 2018',
+      fact: 'Found my first bug in 2025',
       icon: '🐛',
       category: 'Career'
     },
     {
       id: '2',
-      fact: 'Have tested 100+ applications',
+      fact: 'Have tested on your current internet provider',
       icon: '🎯',
       category: 'Stats'
     },
     {
       id: '3',
-      fact: 'Specialize in API & Mobile security',
+      fact: 'My first project ever was driven by fear',
       icon: '🔐',
       category: 'Expertise'
     },
     {
       id: '4',
-      fact: 'Love automating recon workflows',
+      fact: 'Kata master',
       icon: '🤖',
       category: 'Hobbies'
     },
@@ -98,8 +98,14 @@ export const fetchFunFacts = async (): Promise<FunFact[]> => {
     },
     {
       id: '6',
-      fact: 'Brew my own coffee for late-night hacking sessions',
+      fact: '"Eunoia" is my favorite word',
       icon: '☕',
+      category: 'Fun'
+    },
+    {
+      id: '7',
+      fact: 'Try to press CTRL + ` (backtick) to open a secret terminal right now!',
+      icon: '🖥️',
       category: 'Fun'
     }
   ];

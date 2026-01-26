@@ -20,7 +20,7 @@ export default function TerminalEasterEgg() {
 
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
-      if (e.ctrlKey && e.key === 't') {
+      if (e.ctrlKey && e.key === '`') {
         setIsOpen(!isOpen);
       }
     };
@@ -61,7 +61,7 @@ export default function TerminalEasterEgg() {
       case 'projects':
         return 'Security Software, 3D Portfolio, AI Analytics, Blockchain Auditor, Cloud Monitor';
       case 'contact':
-        return 'Email: hello@jamsonanjera.com | Web: www.jamsonanjera.com';
+        return 'Email: jamsonanjera@gmail.com | Web: www.jamsonanjera.com';
       case 'clear':
         setHistory([]);
         return '';
@@ -144,7 +144,7 @@ export default function TerminalEasterEgg() {
 
             {/* Footer */}
             <div className="absolute bottom-2 left-4 text-xs text-green-400/60">
-              Press Ctrl+T to toggle • Type 'exit' to close
+              Press Ctrl+` to toggle • Type 'exit' to close
             </div>
           </motion.div>
         </motion.div>
