@@ -157,10 +157,10 @@ function App() {
             viewport={{ once: true }}
           >
             <p style={{ color: COLORS.textSecondary }}>
-              © 2025 Jamson Anjera. Built with passion and cutting-edge technology.
+              © 2025 Jamson Anjera.
             </p>
             <p className="mt-2 text-sm" style={{ color: COLORS.textSecondary }}>
-              Kind Sophistication • Crafted with React, Three.js, and ❤️
+              All rights reserved.
             </p>
           </motion.div>
         </div>
