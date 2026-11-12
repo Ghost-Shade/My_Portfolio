@@ -9,3 +9,4 @@ yw_manifest.json
 .env
 node_modules/
 post_log
+tsconfig.json

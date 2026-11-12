@@ -1,112 +1,52 @@
-import React from 'react';
-import { useState, useEffect, Suspense } from 'react';
+import { Suspense, lazy, useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { useMousePosition } from './hooks/useMousePosition';
 import { initEmailJS } from './utils/email';
 import { COLORS } from './constants';
 
+const Navigation = lazy(() => import('./components/ui/Navigation'));
+const HeroSection = lazy(() => import('./components/sections/HeroSection'));
+const AboutSection = lazy(() => import('./components/sections/AboutSection'));
+const ProjectsSection = lazy(() => import('./components/sections/ProjectsSection'));
+const ContactSection = lazy(() => import('./components/sections/ContactSection'));
+const WavesBackground = lazy(() => import('./components/three/WavesBackground'));
+const FloatingObject = lazy(() => import('./components/three/FloatingObject'));
+const LoadingScreen = lazy(() => import('./components/ui/LoadingScreen'));
+const TerminalEasterEgg = lazy(() => import('./components/ui/TerminalEasterEgg'));
+const Footer = lazy(() => import('./components/ui/Footer'));
+const BlogsPage = lazy(() => import('./pages/BlogsPage'));
+const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
 
-// Lazy load components for better performance
-const Navigation = () => import('./components/ui/Navigation').then(mod => mod.default);
-const HeroSection = () => import('./components/sections/HeroSection').then(mod => mod.default);
-const AboutSection = () => import('./components/sections/AboutSection').then(mod => mod.default);
-const ProjectsSection = () => import('./components/sections/ProjectsSection').then(mod => mod.default);
-//const NewsSection = () => import('./components/sections/NewsSection').then(mod => mod.default);
-const AchievementsSection = () => import('./components/sections/AchievementsSection').then(mod => mod.default);
-const ContactSection = () => import('./components/sections/ContactSection').then(mod => mod.default);
-const WavesBackground = () => import('./components/three/WavesBackground').then(mod => mod.default);
-const FloatingObject = () => import('./components/three/FloatingObject').then(mod => mod.default);
-const LoadingScreen = () => import('./components/ui/LoadingScreen').then(mod => mod.default);
-const TerminalEasterEgg = () => import('./components/ui/TerminalEasterEgg').then(mod => mod.default);
+// AchievementsSection is intentionally NOT imported — the file is preserved
+// in components/sections/AchievementsSection.tsx for future use.
 
-function App() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [NavigationComp, setNavigationComp] = useState<any>(null);
-  const [HeroComp, setHeroComp] = useState<any>(null);
-  const [AboutComp, setAboutComp] = useState<any>(null);
-  const [ProjectsComp, setProjectsComp] = useState<any>(null);
-  //const [NewsComp, setNewsComp] = useState<any>(null);
-  const [AchievementsComp, setAchievementsComp] = useState<any>(null);
-  const [ContactComp, setContactComp] = useState<any>(null);
-  const [WavesComp, setWavesComp] = useState<any>(null);
-  const [FloatingComp, setFloatingComp] = useState<any>(null);
-  const [LoadingComp, setLoadingComp] = useState<any>(null);
-  const [TerminalComp, setTerminalComp] = useState<any>(null);
-  
-  const mousePosition = useMousePosition();
+function HomePage() {
+  const location = useLocation();
 
   useEffect(() => {
-    // Initialize EmailJS
-    initEmailJS();
-
-    // Load components
-    const loadComponents = async () => {
-      const [
-        Nav,
-        Hero,
-        About,
-        Projects,
-        //News,
-        Achievements,
-        Contact,
-        Waves,
-        Floating,
-        Loading,
-        Terminal,
-      ] = await Promise.all([
-        Navigation(),
-        HeroSection(),
-        AboutSection(),
-        ProjectsSection(),
-        //NewsSection(),
-        AchievementsSection(),
-        ContactSection(),
-        WavesBackground(),
-        FloatingObject(),
-        LoadingScreen(),
-        TerminalEasterEgg(),
-      ]);
-
-      setNavigationComp(() => Nav);
-      setHeroComp(() => Hero);
-      setAboutComp(() => About);
-      setProjectsComp(() => Projects);
-      //setNewsComp(() => News);
-      setAchievementsComp(() => Achievements);
-      setContactComp(() => Contact);
-      setWavesComp(() => Waves);
-      setFloatingComp(() => Floating);
-      setLoadingComp(() => Loading);
-      setTerminalComp(() => Terminal);
-
-      // Simulate loading time for better UX
-      setTimeout(() => setIsLoading(false), 2000);
-    };
-
-    loadComponents();
-  }, []);
-
-  useEffect(() => {
-    // Add smooth scroll behavior
-    document.documentElement.style.scrollBehavior = 'smooth';
-    
-    return () => {
-      document.documentElement.style.scrollBehavior = 'auto';
-    };
-  }, []);
-
-  if (isLoading) {
-    return (
-      <div style={{ backgroundColor: COLORS.background }} className="min-h-screen">
-        {LoadingComp && <LoadingComp />}
-      </div>
-    );
-  }
+    const target = (location.state as { scrollTo?: string } | null)?.scrollTo;
+    if (!target) return;
+    const timer = setTimeout(() => {
+      document.getElementById(target)?.scrollIntoView({ behavior: 'smooth' });
+    }, 120);
+    return () => clearTimeout(timer);
+  }, [location.key]);
 
   return (
-    <div className="relative" style={{ backgroundColor: COLORS.background }}>
-      {/* 3D Background */}
+    <>
+      <HeroSection />
+      <AboutSection />
+      <ProjectsSection />
+      <ContactSection />
+    </>
+  );
+}
+
+function Background3D() {
+  const mousePosition = useMousePosition();
+  return (
+    <>
       <div className="fixed inset-0 -z-10">
         <Canvas
           camera={{ position: [0, 5, 10], fov: 60 }}
@@ -117,56 +57,68 @@ function App() {
           <ambientLight intensity={0.5} />
           <pointLight position={[10, 10, 10]} intensity={1} color={COLORS.accent} />
           <Suspense fallback={null}>
-            {FloatingComp && <FloatingComp mousePosition={mousePosition} />}
+            <FloatingObject mousePosition={mousePosition} />
           </Suspense>
         </Canvas>
       </div>
-
-      {/* Waves Background */}
-      {WavesComp && <WavesComp />}
-
-      {/* Terminal Easter Egg */}
-      {TerminalComp && <TerminalComp />}
-
-      {/* Navigation */}
-      {NavigationComp && <NavigationComp />}
-
-      {/* Main Content */}
-      <main className="relative z-10">
-        {HeroComp && <HeroComp />}
-        {AboutComp && <AboutComp />}
-        {ProjectsComp && <ProjectsComp />}
-        {/*NewsComp && <NewsComp />*/}
-        {AchievementsComp && <AchievementsComp/>}
-        {ContactComp && <ContactComp />}
-      </main>
-
-      {/* Footer */}
-      <footer
-        className="relative z-10 py-8 px-6 border-t"
-        style={{ 
-          backgroundColor: COLORS.background,
-          borderColor: `${COLORS.accent}30`
-        }}
-      >
-        <div className="container mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <p style={{ color: COLORS.textSecondary }}>
-              © 2025 Jamson Anjera.
-            </p>
-            <p className="mt-2 text-sm" style={{ color: COLORS.textSecondary }}>
-              All rights reserved.
-            </p>
-          </motion.div>
-        </div>
-      </footer>
-    </div>
+      <Suspense fallback={null}>
+        <WavesBackground />
+      </Suspense>
+    </>
   );
 }
 
-export default App;
+export default function App() {
+  const [isLoading, setIsLoading] = useState(true);
+  const location = useLocation();
+  const isBlogRoute = location.pathname.startsWith('/blogs');
+
+  useEffect(() => {
+    initEmailJS();
+    const timer = setTimeout(() => setIsLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.style.scrollBehavior = 'smooth';
+    return () => {
+      document.documentElement.style.scrollBehavior = 'auto';
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isBlogRoute) window.scrollTo({ top: 0 });
+  }, [location.pathname, isBlogRoute]);
+
+  return (
+    <div className="relative" style={{ backgroundColor: COLORS.background }}>
+      {/* 3D backgrounds are skipped on blog routes for readability + perf */}
+      {!isBlogRoute && (
+        <Suspense fallback={null}>
+          <Background3D />
+        </Suspense>
+      )}
+
+      <Suspense fallback={null}><TerminalEasterEgg /></Suspense>
+      <Suspense fallback={null}><Navigation /></Suspense>
+
+      <main className="relative z-10">
+        <Suspense fallback={<div className="min-h-screen" style={{ backgroundColor: COLORS.background }} />}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/blogs" element={<BlogsPage />} />
+            <Route path="/blogs/:slug" element={<BlogPostPage />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </Suspense>
+      </main>
+
+      <Suspense fallback={null}><Footer /></Suspense>
+
+      {/* Overlay loading screen — content loads behind it during the 2s */}
+      {isLoading && (
+        <Suspense fallback={null}><LoadingScreen /></Suspense>
+      )}
+    </div>
+  );
+}

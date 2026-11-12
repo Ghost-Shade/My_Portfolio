@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from 'react';
+import { Mail, Globe, Linkedin, Github, type LucideIcon } from 'lucide-react';
+
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { sendEmail } from '../../utils/email';
@@ -67,6 +69,13 @@ export default function ContactSection() {
     },
   };
 
+  const contactLinks: { icon: LucideIcon; label: string; value: string; href: string }[] = [
+    { icon: Mail, label: 'Email', value: 'jamsonanjera@gmail.com', href: 'mailto:jamsonanjera@gmail.com' },
+    { icon: Globe, label: 'Web', value: 'www.jamsonanjera.com', href: 'https://www.jamsonanjera.com' },
+    { icon: Linkedin, label: 'LinkedIn', value: '/in/jamson-anjera', href: 'https://www.linkedin.com/in/jamson-anjera' },
+    { icon: Github, label: 'GitHub', value: 'github.com/Ghost-Shade', href: 'https://github.com/Ghost-Shade' },
+];
+
   return (
     <section
       id="contact"
@@ -113,74 +122,28 @@ export default function ContactSection() {
               </div>
 
               <div className="space-y-4">
-                <div className="flex items-center space-x-4">
-                  <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center"
-                    style={{ backgroundColor: `${COLORS.accent}20` }}
-                  >
-                    <span className="text-xl">📧</span>
-                  </div>
-                  <div>
-                    <div
-                      className="font-semibold"
-                      style={{ color: COLORS.text }}
+                  {contactLinks.map(({ icon: Icon, label, value, href }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      target={href.startsWith('mailto:') ? undefined : '_blank'}
+                      rel={href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+                      className="flex items-center space-x-4 group"
                     >
-                      Email
-                    </div>
-                    <div
-                      className="text-sm"
-                      style={{ color: COLORS.textSecondary }}
-                    >
-                      jamsonanjera@gmail.com
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-4">
-                  <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center"
-                    style={{ backgroundColor: `${COLORS.accent}20` }}
-                  >
-                    <span className="text-xl">🌐</span>
-                  </div>
-                  <div>
-                    <div
-                      className="font-semibold"
-                      style={{ color: COLORS.text }}
-                    >
-                      Web
-                    </div>
-                    <div
-                      className="text-sm"
-                      style={{ color: COLORS.textSecondary }}
-                    >
-                      www.jamsonanjera.com
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-4">
-                  <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center"
-                    style={{ backgroundColor: `${COLORS.accent}20` }}
-                  >
-                    <span className="text-xl">💼</span>
-                  </div>
-                  <div>
-                    <div
-                      className="font-semibold"
-                      style={{ color: COLORS.text }}
-                    >
-                      LinkedIn
-                    </div>
-                    <div
-                      className="text-sm"
-                      style={{ color: COLORS.textSecondary }}
-                    >
-                      /in/jamsonanjera
-                    </div>
-                  </div>
-                </div>
+                      <div
+                        className="w-12 h-12 rounded-full flex items-center justify-center transition-colors"
+                        style={{ backgroundColor: `${COLORS.accent}20`, color: COLORS.accent }}
+                      >
+                        <Icon size={20} />
+                      </div>
+                      <div>
+                        <div className="font-semibold" style={{ color: COLORS.text }}>{label}</div>
+                        <div className="text-sm group-hover:text-purple-400 transition-colors" style={{ color: COLORS.textSecondary }}>
+                          {value}
+                        </div>
+                      </div>
+                    </a>
+                  ))}
               </div>
             </motion.div>
 

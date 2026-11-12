@@ -12,11 +12,7 @@ export const FONTS = {
 } as const;
 
 export const ANIMATIONS = {
-  duration: {
-    fast: 0.2,
-    normal: 0.3,
-    slow: 0.5,
-  },
+  duration: { fast: 0.2, normal: 0.3, slow: 0.5 },
   easing: {
     ease: 'easeInOut',
     bounce: 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
@@ -34,7 +30,5 @@ export const SECTIONS = {
   hero: 'hero',
   about: 'about',
   projects: 'projects',
-  //news: 'news',
-  achievements: 'achievements',
   contact: 'contact',
 } as const;

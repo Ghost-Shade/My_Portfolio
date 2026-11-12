@@ -1,24 +1,33 @@
-import React from "react";
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useScrollToSection } from '../../hooks/useScrollToSection';
 import { COLORS, SECTIONS } from '../../constants';
+
+type NavItem = { id: string; label: string; type: 'section' | 'route' };
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { scrollToSection } = useScrollToSection();
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const navItems = [
-    { id: SECTIONS.hero, label: 'Home' },
-    { id: SECTIONS.about, label: 'About' },
-    { id: SECTIONS.projects, label: 'Projects' },
-    //--{ id: SECTIONS.news, label: 'News' },
-    { id: SECTIONS.achievements, label: 'Achievements'},
-    { id: SECTIONS.contact, label: 'Contact' },
+  const navItems: NavItem[] = [
+    { id: SECTIONS.hero, label: 'Home', type: 'section' },
+    { id: SECTIONS.about, label: 'About', type: 'section' },
+    { id: SECTIONS.projects, label: 'Projects', type: 'section' },
+    { id: 'blogs', label: 'Blogs', type: 'route' },
+    { id: SECTIONS.contact, label: 'Contact', type: 'section' },
   ];
 
-  const handleNavClick = (sectionId: string) => {
-    scrollToSection(sectionId);
+  const handleNavClick = (item: NavItem) => {
+    if (item.type === 'route') {
+      navigate('/blogs');
+    } else if (location.pathname !== '/') {
+      navigate('/', { state: { scrollTo: item.id } });
+    } else {
+      scrollToSection(item.id);
+    }
     setIsMenuOpen(false);
   };
 
@@ -42,12 +51,12 @@ export default function Navigation() {
             JA
           </motion.div>
 
-          {/* Desktop Navigation */}
+          {/* Desktop */}
           <div className="hidden md:flex space-x-8">
             {navItems.map((item, index) => (
               <motion.button
                 key={item.id}
-                onClick={() => handleNavClick(item.id)}
+                onClick={() => handleNavClick(item)}
                 className="hover:text-purple-400 transition-colors"
                 style={{ color: COLORS.text }}
                 initial={{ opacity: 0, y: -20 }}
@@ -59,12 +68,13 @@ export default function Navigation() {
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile button */}
           <motion.button
             className="md:hidden"
             style={{ color: COLORS.text }}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             whileTap={{ scale: 0.95 }}
+            aria-label="Toggle navigation menu"
           >
             <div className="w-6 h-6 flex flex-col justify-center space-y-1">
               <motion.span
@@ -83,7 +93,7 @@ export default function Navigation() {
           </motion.button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile menu */}
         {isMenuOpen && (
           <motion.div
             className="md:hidden mt-4 pb-4"
@@ -94,7 +104,7 @@ export default function Navigation() {
             {navItems.map((item) => (
               <motion.button
                 key={item.id}
-                onClick={() => handleNavClick(item.id)}
+                onClick={() => handleNavClick(item)}
                 className="block w-full text-left py-2 hover:text-purple-400 transition-colors"
                 style={{ color: COLORS.text }}
                 whileHover={{ x: 10 }}

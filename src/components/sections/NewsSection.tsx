@@ -129,7 +129,7 @@ export default function NewsSection() {
                 className="text-sm font-semibold whitespace-nowrap"
                 style={{ color: COLORS.accent }}
               >
-                📰 LATEST:
+                LATEST:
               </span>
               <div className="flex-1 overflow-hidden">
                 <AnimatePresence mode="wait">

@@ -34,7 +34,6 @@ export interface FloatingObjectProps {
   mousePosition: { x: number; y: number };
 }
 
- 
 export type Achievement = {
   id: string;
   platform: 'Bugcrowd' | 'HackerOne' | 'Other';
@@ -45,14 +44,17 @@ export type Achievement = {
   stats?: {
     rank?: string;
     reputation?: number;
-    bugsSubmitted?: number; 
+    bugsSubmitted?: number;
     swagReceived?: string[];
   };
 };
 
-export type FunFact = {
-  id: string;
-  fact: string;
-  icon: string; // emoji or icon class
+export interface BlogPost {
+  slug: string;
+  title: string;
+  date: string;
   category: string;
-};
+  summary: string;
+  tags: string[];
+  content: string;
+}

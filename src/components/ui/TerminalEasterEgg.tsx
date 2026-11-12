@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { COLORS } from '../../constants';
+import { X } from 'lucide-react';
 
 export default function TerminalEasterEgg() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,9 +12,9 @@ export default function TerminalEasterEgg() {
 
   const terminalLines = [
     '> Initializing portfolio system...',
-    '> Loading creative modules... ✓',
-    '> Activating security protocols... ✓',
-    '> Deploying AI algorithms... ✓',
+    '> Loading creative modules... ',
+    '> Activating security protocols... ',
+    '> Deploying AI algorithms... ',
     '> Portfolio ready for interaction.',
     '> Welcome to Jamson Anjera\'s digital space.',
   ];
@@ -102,8 +103,9 @@ export default function TerminalEasterEgg() {
               <button
                 onClick={() => setIsOpen(false)}
                 className="text-green-400 hover:text-green-300"
+                aria-label="Close terminal"
               >
-                ✕
+                <X size={14} />
               </button>
             </div>
 

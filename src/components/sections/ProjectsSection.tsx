@@ -10,6 +10,7 @@ import AIDashboard from '/src/assets/AI-Powered Dashboard.jpg';
 import Blockchain from '/src/assets/Blockchain.jpg';
 import CloudMonitor from '/src/assets/Cloud-Monitor.jpg';
 import MobileSec from '/src/assets/Mobile-Sec.jpg';
+import { ExternalLink, Github } from 'lucide-react';
 
 
 const projects: Project[] = [
@@ -200,9 +201,6 @@ export default function ProjectsSection() {
                 whileHover={{ y: -10, scale: 1.02 }}
                 onClick={() => setSelectedProject(project)}
               >
-                {/* <div className="aspect-video bg-gradient-to-br from-purple-600/20 to-blue-600/20 flex items-center justify-center">
-                  <div className="text-6xl opacity-50">🚀</div>
-                </div> */}
 
                 <div className="aspect-video overflow-hidden">
                   <img 
@@ -277,7 +275,6 @@ export default function ProjectsSection() {
               variants={modalVariants}
             >
               <div className="aspect-video bg-gradient-to-br from-purple-600/20 to-blue-600/20 flex items-center justify-center">
-                {/* <div className="text-8xl opacity-50">🚀</div> */}
                 {selectedProject?.image && (
                   <img
                   src={selectedProject.image}
@@ -328,31 +325,22 @@ export default function ProjectsSection() {
                 <div className="flex gap-4">
                   <motion.button
                     className="px-6 py-3 rounded-lg font-semibold flex items-center gap-2"
-                    style={{
-                      backgroundColor: COLORS.accent,
-                      color: COLORS.text,
-                    }}
+                    style={{ backgroundColor: COLORS.accent, color: COLORS.text }}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => openLink(selectedProject.demoUrl)}
                   >
-                    🔗 Live Demo
+                    <ExternalLink size={16} /> Live Demo
                   </motion.button>
-                  
+
                   <motion.button
                     className="px-6 py-3 rounded-lg font-semibold border-2 flex items-center gap-2"
-                    style={{
-                      borderColor: COLORS.accent,
-                      color: COLORS.accent,
-                    }}
-                    whileHover={{
-                      backgroundColor: COLORS.accent,
-                      color: COLORS.text,
-                    }}
+                    style={{ borderColor: COLORS.accent, color: COLORS.accent }}
+                    whileHover={{ backgroundColor: COLORS.accent, color: COLORS.text }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => openLink(selectedProject.githubUrl)}
                   >
-                    💻 View Code
+                    <Github size={16} /> View Code
                   </motion.button>
                 </div>
               </div>
